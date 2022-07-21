@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Socket client</title>
+
+      <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<body>
+    <div class="container flex flex-col items-center justify-center mx-auto mt-10">
+        <h1 class="text-2xl text-center pb-5">Socket.IO Application</h1>
+        <div class="mx-auto inline-block p-5 bg-gradient-to-r from-slate-100 to-slate-50 rounded shadow">
+            <div class="flex flex-col gap-5 items-center justify-center">
+                <div id="status" class="rounded-full inline-block p-2 bg-yellow-500 transition-all">
+
+                </div>
+                <p id="statusText">Socket connecting...</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-10 mx-auto flex flex-col flex-wrap gap-2">
+        <div class="bg-gradient-to-r from-slate-100 to-slate-50 w-full shadow rounded p-5 gap-5 mx-auto flex flex-col">
+            <h3 class="text-sm w-full font-medium border-solid border-b-2 pb-2 border-slate-200">Connected users</h3>
+            <div id="users" class="flex flex-col gap-5 h-full">
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-10 mx-auto flex flex-row flex-wrap gap-2">
+        <div class="bg-gradient-to-r from-slate-100 to-slate-50 w-full shadow rounded p-5 gap-5 mx-auto flex" style="flex:1;">
+            <form id="sendMessageForm" class="form">
+                <label for="user" class="block mb-3">
+                    <span class="block text-sm font-medium text-slate-700 mb-2">Your user</span>
+                    <input type="text" id="user" name="user" class="rounded p-2 border-2 border-slate-100 outline-slate-300 transition-all ease-in-out w-80 read-only:bg-transparent read-only:border-transparent read-only:outline-0" readonly placeholder="Loading...">
+                </label>
+
+                <label for="friend" class="block mb-3">
+                    <span class="block text-sm font-medium text-slate-700 mb-2">Your friend's user</span>
+                    <input type="text" id="friend" name="friend" class="rounded p-2 border-2 border-slate-100 outline-slate-300 transition-all ease-in-out w-80" placeholder="Enter your friend's name...">
+                </label>
+
+                <label for="message" class="block mb-3">
+                    <span class="block text-sm font-medium text-slate-700 mb-2">Special message for your friend</span>
+                    <input type="text" id="message" name="message" class="rounded p-2 border-2 border-slate-100 outline-slate-300 transition-all ease-in-out w-80" placeholder="Type something beautiful...">
+                </label>
+                
+                <button type="submit" id="send" class="rounded p-2 w-full bg-blue-500 text-white hover:bg-blue-400 transition-all ease-in-out">Send</button>
+            </form>            
+        </div>
+        <div class="bg-gradient-to-r from-slate-100 to-slate-50 shadow rounded p-5 gap-5 flex flex-col w-full h-max" style="flex:1;">
+            <div id="messages" class="flex flex-col gap-5 h-full">
+                <h3 class="text-sm font-medium border-solid border-b-2 pb-2 border-slate-200">Chat</h3>
+            </div>
+        </div>
+    </div>
+    
+
+    <script src="./socket.io/socket.io.js"></script>
+    <script src="./assets/socket-client.js"></script>
+
+    <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            clifford: '#da373d',
+          }
+        }
+      }
+    }
+  </script>
+</body>
+</html>
